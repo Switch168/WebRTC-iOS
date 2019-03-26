@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49507D12224AD04E00CD6B09 /* Cordova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49507D0A224ACED700CD6B09 /* Cordova.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		49507D13224AD04E00CD6B09 /* Cordova.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49507D0A224ACED700CD6B09 /* Cordova.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		499FF766224AEA83007394A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499FF765224AEA83007394A5 /* ViewController.swift */; };
+		49F445DB224AEDE0009C437E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F445DA224AEDE0009C437E /* Storyboard.storyboard */; };
 		79177C9720B0DE7A00BCD399 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79177C9620B0DE7A00BCD399 /* WebRTCClient.swift */; };
 		79177C9920B0DF2700BCD399 /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79177C9820B0DF2700BCD399 /* SignalingClient.swift */; };
 		79177CA620B1F76E00BCD399 /* RTCStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79177CA520B1F76E00BCD399 /* RTCStates.swift */; };
@@ -33,7 +33,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 11;
 			files = (
-				49507D13224AD04E00CD6B09 /* Cordova.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,7 +43,8 @@
 		27F59EEC794858CDDF75D2F2 /* libPods-WebRTC-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WebRTC-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F327EBA6209267B26D6802D /* Pods-WebRTC-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTC-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		3511974734F2E9151ADAD1A8 /* Pods-WebRTC-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTC-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo.release.xcconfig"; sourceTree = "<group>"; };
-		49507D0A224ACED700CD6B09 /* Cordova.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cordova.framework; path = Carthage/Build/iOS/Cordova.framework; sourceTree = "<group>"; };
+		499FF765224AEA83007394A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		49F445DA224AEDE0009C437E /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		79177C9620B0DE7A00BCD399 /* WebRTCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
 		79177C9820B0DF2700BCD399 /* SignalingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
 		79177C9C20B0E88B00BCD399 /* WebRTC-Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebRTC-Demo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -73,7 +73,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3736211ED520122E5DBF999 /* libPods-WebRTC-Demo.a in Frameworks */,
-				49507D12224AD04E00CD6B09 /* Cordova.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,8 +121,10 @@
 		7921989F220107C90051F03F /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				49F445DA224AEDE0009C437E /* Storyboard.storyboard */,
 				79262EE820B0D6F600D576C1 /* MainViewController.swift */,
 				798FBA462200F681009F525E /* MainViewController.xib */,
+				499FF765224AEA83007394A5 /* ViewController.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -191,7 +192,6 @@
 		CFB6FD6BADE7DD44D7F5D315 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				49507D0A224ACED700CD6B09 /* Cordova.framework */,
 				CA606D7CF8E980599582389C /* libPods-WebRTC.a */,
 				27F59EEC794858CDDF75D2F2 /* libPods-WebRTC-Demo.a */,
 			);
@@ -211,6 +211,7 @@
 				79262EE120B0D6F600D576C1 /* Resources */,
 				24771E9787916B8FC19C8CA0 /* [CP] Embed Pods Frameworks */,
 				49507D14224AD04E00CD6B09 /* Embed Frameworks */,
+				866043D56AD4398CB91142DD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +265,7 @@
 				798FBA472200F681009F525E /* MainViewController.xib in Resources */,
 				79177CAA20B2283F00BCD399 /* VideoViewController.xib in Resources */,
 				798FBA492200F9A9009F525E /* LaunchScreen.storyboard in Resources */,
+				49F445DB224AEDE0009C437E /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +288,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		866043D56AD4398CB91142DD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo-resources.sh",
+				"${PODS_ROOT}/phonegap-ios-template/resources/config.xml",
+				"${PODS_ROOT}/phonegap-ios-template/resources/www",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/config.xml",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/www",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8777D042E02FC866C98B7E95 /* [CP] Check Pods Manifest.lock */ = {
@@ -317,6 +343,7 @@
 				792198A222011A450051F03F /* Config.swift in Sources */,
 				79177CA820B2276400BCD399 /* VideoViewController.swift in Sources */,
 				79262EE720B0D6F600D576C1 /* AppDelegate.swift in Sources */,
+				499FF766224AEA83007394A5 /* ViewController.swift in Sources */,
 				795A4A26221E081A00F8BB03 /* SessionDescription.swift in Sources */,
 				79177CA620B1F76E00BCD399 /* RTCStates.swift in Sources */,
 				79177C9920B0DF2700BCD399 /* SignalingClient.swift in Sources */,

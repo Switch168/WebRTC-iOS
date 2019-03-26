@@ -5,3 +5,26 @@ target 'WebRTC-Demo' do
     pod 'GoogleWebRTC', '~> 1.1'
     pod 'Starscream', '~> 3.0'
 end
+
+# CordovaLib Dependency Pod
+pod 'Cordova'
+
+# Cordova Core Plugin Dependency Pod References
+
+pod 'cordova-plugin-camera'
+pod 'cordova-plugin-contacts'
+pod 'cordova-plugin-device'
+pod 'cordova-plugin-device-orientation'
+pod 'cordova-plugin-device-motion'
+pod 'cordova-plugin-globalization'
+pod 'cordova-plugin-geolocation'
+pod 'cordova-plugin-file'
+pod 'cordova-plugin-media-capture'
+pod 'cordova-plugin-network-information'
+pod 'cordova-plugin-splashscreen'
+pod 'cordova-plugin-inappbrowser'
+pod 'cordova-plugin-file-transfer'
+pod 'cordova-plugin-statusbar'
+pod 'cordova-plugin-vibration'
+
+pod 'phonegap-ios-template'

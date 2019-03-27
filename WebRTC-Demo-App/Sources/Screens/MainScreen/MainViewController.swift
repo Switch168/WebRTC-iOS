@@ -98,6 +98,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "WebRTC Demo"
+        //self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        //self.navigationItem.hidesBackButton = false
         self.signalingConnected = false
         self.hasLocalSdp = false
         self.hasRemoteSdp = false
@@ -109,6 +111,10 @@ class MainViewController: UIViewController {
         self.signalClient.connect()
         self.webRTCClient.delegate = self
         self.signalClient.delegate = self
+    }
+    
+    @IBAction func backButton(sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction private func offerDidTap(_ sender: UIButton) {
@@ -224,6 +230,10 @@ extension MainViewController: WebRTCClientDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func dismissView(sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

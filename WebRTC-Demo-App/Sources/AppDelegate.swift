@@ -8,13 +8,16 @@
 
 import UIKit
 
+class RootViewController: UIViewController {
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //    private var window: UIWindow?
     
     var window: UIWindow?
-    private let config = Config.default
+    var config = Config.default
     
 //    func application(_ application: UIApplication,
 //                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -28,6 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
+    }
+    
+    var rootViewController: RootViewController {
+        return window!.rootViewController as! RootViewController
+    }
+    
+    static var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
     }
     
 //    private func buildMainViewController() -> UIViewController {

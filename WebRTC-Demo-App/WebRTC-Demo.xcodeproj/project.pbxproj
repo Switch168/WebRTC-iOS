@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		499FF766224AEA83007394A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499FF765224AEA83007394A5 /* ViewController.swift */; };
 		49F445DB224AEDE0009C437E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F445DA224AEDE0009C437E /* Storyboard.storyboard */; };
+		49F445DE224AF3CD009C437E /* SecondScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F445DD224AF3CD009C437E /* SecondScreen.swift */; };
+		49F445E0224AFDD3009C437E /* CordovaPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F445DF224AFDD3009C437E /* CordovaPlugin.swift */; };
 		79177C9720B0DE7A00BCD399 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79177C9620B0DE7A00BCD399 /* WebRTCClient.swift */; };
 		79177C9920B0DF2700BCD399 /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79177C9820B0DF2700BCD399 /* SignalingClient.swift */; };
 		79177CA620B1F76E00BCD399 /* RTCStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79177CA520B1F76E00BCD399 /* RTCStates.swift */; };
@@ -45,6 +47,8 @@
 		3511974734F2E9151ADAD1A8 /* Pods-WebRTC-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTC-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		499FF765224AEA83007394A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		49F445DA224AEDE0009C437E /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		49F445DD224AF3CD009C437E /* SecondScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreen.swift; sourceTree = "<group>"; };
+		49F445DF224AFDD3009C437E /* CordovaPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CordovaPlugin.swift; sourceTree = "<group>"; };
 		79177C9620B0DE7A00BCD399 /* WebRTCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
 		79177C9820B0DF2700BCD399 /* SignalingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
 		79177C9C20B0E88B00BCD399 /* WebRTC-Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebRTC-Demo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -88,6 +92,14 @@
 				3511974734F2E9151ADAD1A8 /* Pods-WebRTC-Demo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		49F445DC224AF3AC009C437E /* SecondScreen */ = {
+			isa = PBXGroup;
+			children = (
+				49F445DD224AF3CD009C437E /* SecondScreen.swift */,
+			);
+			path = SecondScreen;
 			sourceTree = "<group>";
 		};
 		79177C9A20B0E82B00BCD399 /* SupportingFiles */ = {
@@ -166,6 +178,7 @@
 				79177CA420B1C39700BCD399 /* Extensions */,
 				79262EE620B0D6F600D576C1 /* AppDelegate.swift */,
 				792198A122011A450051F03F /* Config.swift */,
+				49F445DF224AFDD3009C437E /* CordovaPlugin.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -173,6 +186,7 @@
 		798FBA442200F510009F525E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				49F445DC224AF3AC009C437E /* SecondScreen */,
 				7921989F220107C90051F03F /* MainScreen */,
 				792198A0220107E30051F03F /* VideoScreen */,
 			);
@@ -339,11 +353,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F445E0224AFDD3009C437E /* CordovaPlugin.swift in Sources */,
 				79262EE920B0D6F600D576C1 /* MainViewController.swift in Sources */,
 				792198A222011A450051F03F /* Config.swift in Sources */,
 				79177CA820B2276400BCD399 /* VideoViewController.swift in Sources */,
 				79262EE720B0D6F600D576C1 /* AppDelegate.swift in Sources */,
 				499FF766224AEA83007394A5 /* ViewController.swift in Sources */,
+				49F445DE224AF3CD009C437E /* SecondScreen.swift in Sources */,
 				795A4A26221E081A00F8BB03 /* SessionDescription.swift in Sources */,
 				79177CA620B1F76E00BCD399 /* RTCStates.swift in Sources */,
 				79177C9920B0DF2700BCD399 /* SignalingClient.swift in Sources */,

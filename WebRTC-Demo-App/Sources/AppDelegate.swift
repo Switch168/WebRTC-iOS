@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    private var window: UIWindow?
     
     var window: UIWindow?
-    var config = Config.default
+//    var config = Config.default
     
 //    func application(_ application: UIApplication,
 //                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

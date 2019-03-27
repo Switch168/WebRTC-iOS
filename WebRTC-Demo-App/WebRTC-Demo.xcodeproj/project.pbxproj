@@ -292,7 +292,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo-frameworks.sh",
 				"${PODS_ROOT}/GoogleWebRTC/Frameworks/frameworks/WebRTC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -301,7 +301,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		866043D56AD4398CB91142DD /* [CP] Copy Pods Resources */ = {
@@ -312,7 +312,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo-resources.sh",
 				"${PODS_ROOT}/phonegap-ios-template/resources/config.xml",
 				"${PODS_ROOT}/phonegap-ios-template/resources/www",
 			);
@@ -325,7 +325,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8777D042E02FC866C98B7E95 /* [CP] Check Pods Manifest.lock */ = {

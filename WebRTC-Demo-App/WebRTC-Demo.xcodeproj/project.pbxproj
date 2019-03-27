@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		499FF766224AEA83007394A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499FF765224AEA83007394A5 /* ViewController.swift */; };
-		49F445DB224AEDE0009C437E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F445DA224AEDE0009C437E /* Storyboard.storyboard */; };
-		49F445DE224AF3CD009C437E /* SecondScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F445DD224AF3CD009C437E /* SecondScreen.swift */; };
 		49F445E0224AFDD3009C437E /* CordovaPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F445DF224AFDD3009C437E /* CordovaPlugin.swift */; };
 		79177C9720B0DE7A00BCD399 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79177C9620B0DE7A00BCD399 /* WebRTCClient.swift */; };
 		79177C9920B0DF2700BCD399 /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79177C9820B0DF2700BCD399 /* SignalingClient.swift */; };
@@ -26,6 +23,7 @@
 		798FBA472200F681009F525E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 798FBA462200F681009F525E /* MainViewController.xib */; };
 		798FBA492200F9A9009F525E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 798FBA482200F9A9009F525E /* LaunchScreen.storyboard */; };
 		A3736211ED520122E5DBF999 /* libPods-WebRTC-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F59EEC794858CDDF75D2F2 /* libPods-WebRTC-Demo.a */; };
+		FA6F541E224B5DEC00C13B7E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6F541D224B5DEC00C13B7E /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,9 +43,6 @@
 		27F59EEC794858CDDF75D2F2 /* libPods-WebRTC-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WebRTC-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F327EBA6209267B26D6802D /* Pods-WebRTC-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTC-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		3511974734F2E9151ADAD1A8 /* Pods-WebRTC-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTC-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo.release.xcconfig"; sourceTree = "<group>"; };
-		499FF765224AEA83007394A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		49F445DA224AEDE0009C437E /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		49F445DD224AF3CD009C437E /* SecondScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreen.swift; sourceTree = "<group>"; };
 		49F445DF224AFDD3009C437E /* CordovaPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CordovaPlugin.swift; sourceTree = "<group>"; };
 		79177C9620B0DE7A00BCD399 /* WebRTCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
 		79177C9820B0DF2700BCD399 /* SignalingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
@@ -69,6 +64,7 @@
 		9ED93846F4CF300F5D5F104C /* Pods-WebRTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WebRTC/Pods-WebRTC.debug.xcconfig"; sourceTree = "<group>"; };
 		A930FC9FB2A066EE0A3E2176 /* Pods-WebRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTC.release.xcconfig"; path = "Pods/Target Support Files/Pods-WebRTC/Pods-WebRTC.release.xcconfig"; sourceTree = "<group>"; };
 		CA606D7CF8E980599582389C /* libPods-WebRTC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WebRTC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA6F541D224B5DEC00C13B7E /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,14 +88,6 @@
 				3511974734F2E9151ADAD1A8 /* Pods-WebRTC-Demo.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		49F445DC224AF3AC009C437E /* SecondScreen */ = {
-			isa = PBXGroup;
-			children = (
-				49F445DD224AF3CD009C437E /* SecondScreen.swift */,
-			);
-			path = SecondScreen;
 			sourceTree = "<group>";
 		};
 		79177C9A20B0E82B00BCD399 /* SupportingFiles */ = {
@@ -133,10 +121,9 @@
 		7921989F220107C90051F03F /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				49F445DA224AEDE0009C437E /* Storyboard.storyboard */,
+				FA6F541D224B5DEC00C13B7E /* Storyboard.storyboard */,
 				79262EE820B0D6F600D576C1 /* MainViewController.swift */,
 				798FBA462200F681009F525E /* MainViewController.xib */,
-				499FF765224AEA83007394A5 /* ViewController.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -186,7 +173,6 @@
 		798FBA442200F510009F525E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				49F445DC224AF3AC009C437E /* SecondScreen */,
 				7921989F220107C90051F03F /* MainScreen */,
 				792198A0220107E30051F03F /* VideoScreen */,
 			);
@@ -279,7 +265,7 @@
 				798FBA472200F681009F525E /* MainViewController.xib in Resources */,
 				79177CAA20B2283F00BCD399 /* VideoViewController.xib in Resources */,
 				798FBA492200F9A9009F525E /* LaunchScreen.storyboard in Resources */,
-				49F445DB224AEDE0009C437E /* Storyboard.storyboard in Resources */,
+				FA6F541E224B5DEC00C13B7E /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,8 +344,6 @@
 				792198A222011A450051F03F /* Config.swift in Sources */,
 				79177CA820B2276400BCD399 /* VideoViewController.swift in Sources */,
 				79262EE720B0D6F600D576C1 /* AppDelegate.swift in Sources */,
-				499FF766224AEA83007394A5 /* ViewController.swift in Sources */,
-				49F445DE224AF3CD009C437E /* SecondScreen.swift in Sources */,
 				795A4A26221E081A00F8BB03 /* SessionDescription.swift in Sources */,
 				79177CA620B1F76E00BCD399 /* RTCStates.swift in Sources */,
 				79177C9920B0DF2700BCD399 /* SignalingClient.swift in Sources */,

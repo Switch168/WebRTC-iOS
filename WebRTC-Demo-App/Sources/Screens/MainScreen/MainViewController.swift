@@ -23,6 +23,11 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var muteButton: UIButton?
     @IBOutlet private weak var webRTCStatusLabel: UILabel?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     private var signalingConnected: Bool = false {
         didSet {
             DispatchQueue.main.async {
@@ -97,7 +102,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "WebRTC Demo"
+//        self.title = "WebRTC Demo"
         //self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         //self.navigationItem.hidesBackButton = false
         self.signalingConnected = false

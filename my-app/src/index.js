@@ -3,6 +3,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+require('./webrtcios');
 
 window.testMomo = function testMomo() {
   console.log("MOMO IS ANGUI")

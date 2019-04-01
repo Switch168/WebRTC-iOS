@@ -51,6 +51,27 @@ module.exports = {
       ]
     );
   },
+  setRemoteDescription: function setRemoteDescription(sdp, callback) {
+    var successHandler = function successHandler(result) {
+      return callback(null, result);
+    };
+
+    var errorHandler = function errorHandler(error) {
+      return callback("Error: ".concat(error));
+    };
+
+    window.cordova.exec(
+      successHandler,
+      errorHandler,
+      "WebRTCiOS",
+      "setRemoteDescription",
+      [
+        {
+          sdp: sdp
+        }
+      ]
+    );
+  },
   close: function close(callback) {
     var successHandler = function successHandler(result) {
       return callback(null, result);

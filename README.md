@@ -2,6 +2,7 @@
 2. Pick and download from https://github.com/CocoaPods/Specs/tree/master/Specs/2/c/6/GoogleWebRTC (see podspec source). Or https://dl.google.com/dl/cpdc/045885e08e9437d8/GoogleWebRTC-1.1.27299.tar.gz
 3. Drag and drop WebRTC.framework to framework (copy item as needed) + set as embedded binary
 4. add `#import <WebRTC/WebRTC.h>` to linked header
+5. Swift v 5 set
 
 ### API
 
@@ -35,6 +36,10 @@ window.webrtcios.createOffer(
 
 window.webrtcios.acceptOffer({iceServers, sdp: "remoteSdp"}, (localSdp) => {
   // send localSdp to other side
+})
+
+window.webrtcios.setRemoteDescription(sdp, () => {
+  
 })
 
 window.webrtcios.close()

@@ -1,0 +1,27 @@
+{
+  "name": "webrtc-ios",
+  "version": "0.0.0",
+  "description": "WebRTC-iOS",
+  "cordova": {
+    "id": "webrtc-ios",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Switch168/WebRTC-iOS.git"
+  },
+  "keywords": [
+    "cordova",
+    "device",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/Switch168/WebRTC-iOS/issues"
+  },
+  "homepage": "https://github.com/Switch168/WebRTC-iOS#readme"
+}

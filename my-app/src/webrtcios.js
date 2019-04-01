@@ -1,49 +1,89 @@
-window.webrtcios = {
-  createOffer(options, callback) {
-    const errorHandler = error => callback(`Error: ${error}`);
-    const successHandler = result => callback(null, result);
-    window.cordova.exec(successHandler, errorHandler, "WebRTCiOS", "createOffer", [
-      options
-    ]);
+// module.exports = {
+//   greet: function (name, successCallback, errorCallback) {
+//     cordova.exec(successCallback, errorCallback, "Hello", "greet", [name]);
+//   }
+// };
+module.exports = {
+  createOffer: function createOffer(options, callback) {
+    var errorHandler = function errorHandler(error) {
+      return callback("Error: ".concat(error));
+    };
+
+    var successHandler = function successHandler(result) {
+      return callback(null, result);
+    };
+
+    window.cordova.exec(
+      successHandler,
+      errorHandler,
+      "WebRTCiOS",
+      "createOffer",
+      [options]
+    );
   },
-  acceptOffer({iceServers, sdp}, callback) {
-    const successHandler = result => {
-      console.log('look here', result)
+  acceptOffer: function acceptOffer(_ref, callback) {
+    var iceServers = _ref.iceServers,
+      sdp = _ref.sdp;
+
+    var successHandler = function successHandler(result) {
       // we need an sdp from the delegate or dont call back
-      if(!result) {
-        return
+      if (!result) {
+        return;
       }
+
       callback(null, result);
-    }
-    const errorHandler = error => callback(`Error: ${error}`);
+    };
+
+    var errorHandler = function errorHandler(error) {
+      return callback("Error: ".concat(error));
+    };
+
     window.cordova.exec(
       successHandler,
       errorHandler,
       "WebRTCiOS",
       "acceptOffer",
-      [{iceServers, sdp}]
+      [
+        {
+          iceServers: iceServers,
+          sdp: sdp
+        }
+      ]
     );
   },
-  setRemoteDescription({iceServers, sdp}, callback) {
-    const successHandler = result => callback(null, result);
-    const errorHandler = error => callback(`Error: ${error}`);
+  setRemoteDescription: function setRemoteDescription(_ref2, callback) {
+    var iceServers = _ref2.iceServers,
+      sdp = _ref2.sdp;
+
+    var successHandler = function successHandler(result) {
+      return callback(null, result);
+    };
+
+    var errorHandler = function errorHandler(error) {
+      return callback("Error: ".concat(error));
+    };
+
     window.cordova.exec(
       successHandler,
       errorHandler,
       "WebRTCiOS",
       "setRemoteDescription",
-      [{sdp}]
+      [
+        {
+          sdp: sdp
+        }
+      ]
     );
   },
-  close(callback) {
-    const successHandler = result => callback(null, result);
-    const errorHandler = error => callback(`Error: ${error}`);
-    window.cordova.exec(
-      successHandler,
-      errorHandler,
-      "WebRTCiOS",
-      "close",
-      []
-    );
+  close: function close(callback) {
+    var successHandler = function successHandler(result) {
+      return callback(null, result);
+    };
+
+    var errorHandler = function errorHandler(error) {
+      return callback("Error: ".concat(error));
+    };
+
+    window.cordova.exec(successHandler, errorHandler, "WebRTCiOS", "close", []);
   }
 };

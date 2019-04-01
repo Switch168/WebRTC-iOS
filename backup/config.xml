@@ -107,7 +107,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <content src="http://175.25.50.118:3000" />
+    <content src="http://localhost:3000" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />

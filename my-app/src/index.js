@@ -1,9 +1,8 @@
-import { render } from 'inferno';
-import './index.css';
-import App from './App';
+import { render } from "inferno";
+import "./index.css";
+import App from "./App";
+import webrtc from "./webrtcios";
 
-require('./webrtcios');
+window.webrtcios = webrtc;
 
-render(<App />, document.getElementById('root'));
-
-
+render(<App />, document.getElementById("root"));

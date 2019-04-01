@@ -92,17 +92,6 @@ class App extends Component {
         >
           Step 2 Receiver - Test accept offe
         </button>
-        <button
-          onClick={() => {
-            if (!this.state.sdp) return;
-            const { sdp } = this.state;
-            window.webrtcios.setRemoteDescription({ sdp }, (error, result) => {
-              this.setState({ sdp: result });
-            });
-          }}
-        >
-          Step 3 Caller - Set Remote
-        </button>{" "}
         <div style="height: 50px;overflow:hidden;">LAST: {this.state.last}</div>
       </div>
     );

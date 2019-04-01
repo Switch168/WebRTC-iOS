@@ -14,17 +14,25 @@ class App extends Component {
       const message = JSON.parse(data);
 
       this.setState({ received: message.data });
-      if(message.type === "answer") {
-        window.webrtcios.setRemoteDescription({ sdp: message.data }, (error, result) => {
-          console.log(message.data)
-          websocket.send(JSON.stringify({data: result, type: "receiverSdp"}))
-          this.setState({ sdp: result });
+      if (message.type === "answer") {
+        window.webrtcios.setRemoteDescription(
+          { sdp: message.data },
+          (error, result) => {
+            console.log(message.data);
+            websocket.send(
+              JSON.stringify({ data: result, type: "receiverSdp" })
+            );
+            this.setState({ sdp: result });
+          }
+        );
+      }
+      if (message.type === "hangup") {
+        window.webrtcios.close((error, result) => {
+          console.log("JS: hangup");
         });
       }
-      if(message.type === "receiverSdp") {
-        // window.webrtcios.setRemoteDescription({ sdp: message.data }, (error, result) => {
-        //   this.setState({ last: result });
-        // });
+      if (message.type === "offer") {
+        this.setState({ sdp: message.data });
       }
     };
   }
@@ -34,8 +42,15 @@ class App extends Component {
         <p>{Date.now()}</p>
         <button
           onClick={() => {
+            websocket.send(JSON.stringify({ type: "hangup" }));
+          }}
+        >
+          Hangup
+        </button>
+        <button
+          onClick={() => {
             window.webrtcios.createOffer({ iceServers }, (error, result) => {
-              console.log("JS", result)
+              console.log("JS", result);
               this.setState({ sdp: result });
             });
           }}
@@ -46,7 +61,15 @@ class App extends Component {
           {this.state.sdp}
         </div>
         <div>{this.state.message}</div>
-        <button onClick={() => websocket.send(JSON.stringify({ type: "offer", data: this.state.sdp }))}>Send SDP</button>
+        <button
+          onClick={() =>
+            websocket.send(
+              JSON.stringify({ type: "offer", data: this.state.sdp })
+            )
+          }
+        >
+          Send SDP
+        </button>
         <p>Received SDP:</p>
         <div id="received" style="height: 100px;overflow:hidden;">
           {this.state.received}
@@ -60,7 +83,9 @@ class App extends Component {
               { iceServers, sdp: this.state.received },
               (error, result) => {
                 this.setState({ accepted: result });
-                websocket.send(JSON.stringify({data: result, type: "answer"}));
+                websocket.send(
+                  JSON.stringify({ data: result, type: "answer" })
+                );
               }
             );
           }}

@@ -18,12 +18,16 @@ class CDVWebRTCiOS: CDVPlugin {
         self.webRTCClient = WebRTCClient(iceServers: iceServers!)
         self.webRTCClient?.delegate = self
         self.webRTCClient!.offer { (sdp: RTCSessionDescription) in
-
+            let pluginResult = CDVPluginResult( status: CDVCommandStatus_OK
+            )
+            pluginResult?.setKeepCallbackAs(true)
+            self.commandDelegate!.send(pluginResult, callbackId: command.callbackId)
         }
     }
 
     @objc(acceptOffer:) func acceptOffer(_ command: CDVInvokedUrlCommand) {
-        NSLog("CDVWebRTCiOS.acceptOffer()");
+        NSLog("CDVWebRTCiOS . acceptOffer()");
+        callbackId = command.callbackId
 
         let argument = command.argument(at: 0) as? NSDictionary
         let iceServers: [String]? = (argument?["iceServers"] as! [String])
@@ -36,10 +40,8 @@ class CDVWebRTCiOS: CDVPlugin {
         self.webRTCClient?.delegate = self
         self.webRTCClient!.set(remoteSdp: rtcSessionDescription) { (Error) in
             self.webRTCClient?.answer(completion: { (sdp: RTCSessionDescription) in
-                let pluginResult = CDVPluginResult(
-                        status: CDVCommandStatus_OK,
-                        messageAs: sdp.sdp
-                )
+                let pluginResult = CDVPluginResult( status: CDVCommandStatus_OK )
+                pluginResult?.setKeepCallbackAs(true)
                 self.commandDelegate!.send(pluginResult, callbackId: command.callbackId)
 
                 let vc = VideoViewController(webRTCClient: self.webRTCClient!)
@@ -47,12 +49,11 @@ class CDVWebRTCiOS: CDVPlugin {
                 navViewController.navigationBar.isHidden = true
                 self.viewController.present(navViewController, animated: true, completion: nil)
             })
-
         }
     }
 
     @objc(setRemoteDescription:) func setRemoteDescription(_ command: CDVInvokedUrlCommand) {
-        NSLog("CDVWebRTCiOS.setRemoteDescription()");
+        NSLog("CDVWebRTCiOS.setRemoteDescription()")
 
         let argument = command.argument(at: 0) as? NSDictionary
         let sdp: String? = (argument?["sdp"] as! String)
@@ -61,7 +62,10 @@ class CDVWebRTCiOS: CDVPlugin {
         let rtcSessionDescription: RTCSessionDescription = RTCSessionDescription(type: type, sdp: sdp!)
 
         self.webRTCClient!.set(remoteSdp: rtcSessionDescription) { (Error) in
+
+
             let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
+            pluginResult?.setKeepCallbackAs(true)
             self.commandDelegate!.send(pluginResult, callbackId: command.callbackId)
 
             let vc = VideoViewController(webRTCClient: self.webRTCClient!)
@@ -71,6 +75,12 @@ class CDVWebRTCiOS: CDVPlugin {
         }
     }
 
+    @objc(close:) func close(_ command: CDVInvokedUrlCommand) {
+        NSLog("CDVWebRTCiOS . close")
+        self.callbackId = nil
+        self.webRTCClient = nil
+        self.viewController.dismiss(animated: true)
+    }
 }
 
 

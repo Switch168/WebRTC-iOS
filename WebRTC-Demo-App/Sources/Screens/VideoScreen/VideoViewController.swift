@@ -64,6 +64,12 @@ class VideoViewController: UIViewController {
     }
     
     @IBAction private func backDidTap(_ sender: Any) {
+        self.webRTCClient.stopCaptureLocalVideo()
+
+
+//        [localRenderer stop];
+//        [remoteRenderer stop];
+
         self.webRTCClient.close()
         self.dismiss(animated: true)
     }

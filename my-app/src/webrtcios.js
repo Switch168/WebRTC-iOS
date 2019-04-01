@@ -7,7 +7,14 @@ window.webrtcios = {
     ]);
   },
   acceptOffer({iceServers, sdp}, callback) {
-    const successHandler = result => callback(null, result);
+    const successHandler = result => {
+      console.log('look here', result)
+      // we need an sdp from the delegate or dont call back
+      if(!result) {
+        return
+      }
+      callback(null, result);
+    }
     const errorHandler = error => callback(`Error: ${error}`);
     window.cordova.exec(
       successHandler,
@@ -26,6 +33,17 @@ window.webrtcios = {
       "WebRTCiOS",
       "setRemoteDescription",
       [{sdp}]
+    );
+  },
+  close(callback) {
+    const successHandler = result => callback(null, result);
+    const errorHandler = error => callback(`Error: ${error}`);
+    window.cordova.exec(
+      successHandler,
+      errorHandler,
+      "WebRTCiOS",
+      "close",
+      []
     );
   }
 };

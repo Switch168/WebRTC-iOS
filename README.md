@@ -1,3 +1,8 @@
+```bash
+./dev.sh # start development
+```
+
+
 # WebRTC-iOS
 A simple native WebRTC demo iOS app using swift. 
 

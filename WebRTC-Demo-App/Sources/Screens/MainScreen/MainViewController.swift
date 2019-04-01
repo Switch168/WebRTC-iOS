@@ -203,7 +203,16 @@ extension MainViewController: SignalClientDelegate {
 }
 
 extension MainViewController: WebRTCClientDelegate {
-    
+    func webRTCClient(_ client: WebRTCClient, didIceGatheringStateChanged stateChanged: RTCIceGatheringState) {
+        print("WebRTCClientDelegate . new signalling state ")
+        //        self.localCandidateCount += 1
+        //        self.signalClient.send(candidate: candidate)
+    }
+    func webRTCClient(_ client: WebRTCClient, didStateChanged stateChanged: RTCSignalingState) {
+        print("WebRTCClientDelegate . new signalling state ")
+        //        self.localCandidateCount += 1
+        //        self.signalClient.send(candidate: candidate)
+    }
     func webRTCClient(_ client: WebRTCClient, didDiscoverLocalCandidate candidate: RTCIceCandidate) {
         print("discovered local candidate")
         self.localCandidateCount += 1
@@ -238,6 +247,7 @@ extension MainViewController: WebRTCClientDelegate {
     }
     
     @IBAction func dismissView(sender: UIButton) {
+        self.webRTCClient.close()
         self.dismiss(animated: true, completion: nil)
     }
 }

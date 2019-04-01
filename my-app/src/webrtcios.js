@@ -16,5 +16,16 @@ window.webrtcios = {
       "acceptOffer",
       [{iceServers, sdp}]
     );
+  },
+  setRemoteDescription({iceServers, sdp}, callback) {
+    const successHandler = result => callback(null, result);
+    const errorHandler = error => callback(`Error: ${error}`);
+    window.cordova.exec(
+      successHandler,
+      errorHandler,
+      "WebRTCiOS",
+      "setRemoteDescription",
+      [{sdp}]
+    );
   }
 };

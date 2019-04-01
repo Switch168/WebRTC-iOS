@@ -1,64 +1,84 @@
-import { version, Component } from "inferno";
-import Logo from "./logo";
+import { Component } from "inferno";
 import "./App.css";
 
-const iceServers = [
-  "stun:stun.l.google.com:19302",
-  "stun:stun1.l.google.com:19302",
-  "stun:stun2.l.google.com:19302",
-  "stun:stun3.l.google.com:19302",
-  "stun:stun4.l.google.com:19302"
-];
+import config from "./config";
+const iceServers = config.iceServers;
+const websocket = new WebSocket(config.signallingServer);
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      sdp: []
+    this.state = { sdp: [], received: [], message: [], accepted: [], last: [] };
+    websocket.onmessage = ({ data }) => {
+      console.log("onmessage", data);
+      const message = JSON.parse(data);
+
+      this.setState({ received: message.data });
+      if(message.type === "answer") {
+        window.webrtcios.setRemoteDescription({ sdp: message.data }, (error, result) => {
+          console.log(message.data)
+          websocket.send(JSON.stringify({data: result, type: "receiverSdp"}))
+          this.setState({ sdp: result });
+        });
+      }
+      if(message.type === "receiverSdp") {
+        // window.webrtcios.setRemoteDescription({ sdp: message.data }, (error, result) => {
+        //   this.setState({ last: result });
+        // });
+      }
     };
   }
   render() {
-    let sdpFromCreateOffer;
     return (
       <div className="App">
-        <header className="App-header">
-          <Logo width="80" height="80" />
-          <p>{`Welcome to Inferno ${version}`}</p>
-          <p>{Date.now()}</p>
-          <button onClick={() => this.setState({ sdp: "" })}>Clear</button>
-          <button
-            onClick={() => {
-              if (!this.state.sdp) return;
-              const { sdp } = this.state;
-              window.webrtcios.acceptOffer(
-                { iceServers, sdp },
-                (error, result) => {
-                  console.log(error, result);
-                  console.log("acceptOffer sdp", error, sdp);
-                }
-              );
-            }}
-          >
-            Test accept offer
-          </button>{" "}
-          <p>Sdp:</p>
-          <p>{this.state.sdp}</p>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-
-          <button
-            onClick={() => {
-              window.webrtcios.createOffer({ iceServers }, (error, result) => {
-                this.setState({ sdp: result });
-                console.log(sdpFromCreateOffer);
-                console.log(typeof sdpFromCreateOffer);
-              });
-            }}
-          >
-            Test create offer
-          </button>
-        </header>
+        <p>{Date.now()}</p>
+        <button
+          onClick={() => {
+            window.webrtcios.createOffer({ iceServers }, (error, result) => {
+              console.log("JS", result)
+              this.setState({ sdp: result });
+            });
+          }}
+        >
+          Step 1 Caller - Test create offer
+        </button>
+        <div id="sdp" style="height: 50px;overflow:hidden;">
+          {this.state.sdp}
+        </div>
+        <div>{this.state.message}</div>
+        <button onClick={() => websocket.send(JSON.stringify({ type: "offer", data: this.state.sdp }))}>Send SDP</button>
+        <p>Received SDP:</p>
+        <div id="received" style="height: 100px;overflow:hidden;">
+          {this.state.received}
+        </div>
+        <div style="height: 50px;overflow:hidden;">{this.state.accepted}</div>
+        <button
+          onClick={() => {
+            if (!this.state.sdp) return;
+            const { sdp } = this.state;
+            window.webrtcios.acceptOffer(
+              { iceServers, sdp: this.state.received },
+              (error, result) => {
+                this.setState({ accepted: result });
+                websocket.send(JSON.stringify({data: result, type: "answer"}));
+              }
+            );
+          }}
+        >
+          Step 2 Receiver - Test accept offe
+        </button>
+        <button
+          onClick={() => {
+            if (!this.state.sdp) return;
+            const { sdp } = this.state;
+            window.webrtcios.setRemoteDescription({ sdp }, (error, result) => {
+              this.setState({ sdp: result });
+            });
+          }}
+        >
+          Step 3 Caller - Set Remote
+        </button>{" "}
+        <div style="height: 50px;overflow:hidden;">LAST: {this.state.last}</div>
       </div>
     );
   }

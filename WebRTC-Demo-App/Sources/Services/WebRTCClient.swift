@@ -9,13 +9,14 @@
 import Foundation
 
 protocol WebRTCClientDelegate: class {
+    func webRTCClient(_ client: WebRTCClient, didIceGatheringStateChanged stateChanged: RTCIceGatheringState)
+    func webRTCClient(_ client: WebRTCClient, didStateChanged stateChanged: RTCSignalingState)
     func webRTCClient(_ client: WebRTCClient, didDiscoverLocalCandidate candidate: RTCIceCandidate)
     func webRTCClient(_ client: WebRTCClient, didChangeConnectionState state: RTCIceConnectionState)
     func webRTCClient(_ client: WebRTCClient, didReceiveData data: Data)
 }
 
 final class WebRTCClient: NSObject {
-    var temperature = 32.0
     // The `RTCPeerConnectionFactory` is in charge of creating new RTCPeerConnection instances.
     // A new RTCPeerConnection should be created every new call, but the factory is shared.
     private static let factory: RTCPeerConnectionFactory = {
@@ -49,13 +50,20 @@ final class WebRTCClient: NSObject {
         // Unified plan is more superior than planB
         config.sdpSemantics = .unifiedPlan
         
-        // gatherContinually will let WebRTC to listen to any network changes and send any new candidates to the other client
-        config.continualGatheringPolicy = .gatherContinually
-        
+        config.continualGatheringPolicy = .gatherOnce
+
+        config.iceTransportPolicy = .all
+
+
+        config.bundlePolicy = RTCBundlePolicy.maxCompat
+        config.iceTransportPolicy = RTCIceTransportPolicy.all
+        config.candidateNetworkPolicy = RTCCandidateNetworkPolicy.all
+        config.disableLinkLocalNetworks = true
+        config.iceCheckMinInterval = 800
+
         let constraints = RTCMediaConstraints(mandatoryConstraints: nil,
                                               optionalConstraints: ["DtlsSrtpKeyAgreement":kRTCMediaConstraintsValueTrue])
         self.peerConnection = WebRTCClient.factory.peerConnection(with: config, constraints: constraints, delegate: nil)
-        
         super.init()
         self.createMediaSenders()
         self.configureAudioSession()
@@ -67,12 +75,11 @@ final class WebRTCClient: NSObject {
     func offer(completion: @escaping (_ sdp: RTCSessionDescription) -> Void) {
         let constrains = RTCMediaConstraints(mandatoryConstraints: self.mediaConstrains,
                                              optionalConstraints: nil)
-        
+
         self.peerConnection.offer(for: constrains) { (sdp, error) in
             guard let sdp = sdp else {
                 return
             }
-            
             self.peerConnection.setLocalDescription(sdp, completionHandler: { (error) in
                 completion(sdp)
             })
@@ -198,12 +205,21 @@ final class WebRTCClient: NSObject {
         let buffer = RTCDataBuffer(data: data, isBinary: true)
         self.remoteDataChannel?.sendData(buffer)
     }
+
+    func getLocalDescription() -> RTCSessionDescription {
+        return self.peerConnection.localDescription!
+    }
+
+    func close() {
+        self.peerConnection.close()
+    }
 }
 
 extension WebRTCClient: RTCPeerConnectionDelegate {
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {
         debugPrint("peerConnection new signaling state: \(stateChanged)")
+        self.delegate?.webRTCClient(self, didStateChanged: stateChanged)
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
@@ -225,6 +241,7 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceGatheringState) {
         debugPrint("peerConnection new gathering state: \(newState)")
+        self.delegate?.webRTCClient(self, didIceGatheringStateChanged: newState)
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {

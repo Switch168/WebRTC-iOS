@@ -64,6 +64,7 @@ class VideoViewController: UIViewController {
     }
     
     @IBAction private func backDidTap(_ sender: Any) {
+        self.webRTCClient.close()
         self.dismiss(animated: true)
     }
 }

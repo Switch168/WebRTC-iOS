@@ -39,6 +39,9 @@ window.webrtcios.createOffer(
 
 window.webrtcios.acceptOffer({iceServers, sdp: "remoteSdp"}, (localSdp) => {
   // send localSdp to other side
+  if(localSdp) {
+    // next step
+  }
 })
 
 window.webrtcios.setRemoteDescription(sdp, () => {

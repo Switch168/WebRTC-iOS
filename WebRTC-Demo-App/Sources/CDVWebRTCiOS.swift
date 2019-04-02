@@ -17,7 +17,17 @@ class CDVWebRTCiOS: CDVPlugin {
         let argument = command.argument(at: 0) as? NSDictionary
         let iceServers: [String]? = (argument?["iceServers"] as! [String])
 
-        self.webRTCClient = WebRTCClient(iceServers: iceServers!)
+        var username: String?
+        var credential: String?
+
+        if(argument?["username"] != nil) {
+            username = (argument?["username"] as! String)
+        }
+        if(argument?["credential"] != nil) {
+            credential = (argument?["credential"] as! String)
+        }
+
+        self.webRTCClient = WebRTCClient(iceServers: iceServers!, username: username, credential: credential)
         self.webRTCClient?.delegate = self
         self.webRTCClient!.offer { (sdp: RTCSessionDescription) in
             let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK
@@ -33,12 +43,24 @@ class CDVWebRTCiOS: CDVPlugin {
 
         let argument = command.argument(at: 0) as? NSDictionary
         let iceServers: [String]? = (argument?["iceServers"] as! [String])
+
+        var username: String?
+        var credential: String?
+
+        if(argument?["username"] != nil) {
+            username = (argument?["username"] as! String)
+        }
+        if(argument?["credential"] != nil) {
+            credential = (argument?["credential"] as! String)
+        }
+
         let sdp: String? = (argument?["sdp"] as! String)
         let type: RTCSdpType = RTCSessionDescription.type(for: "offer")
 
         let rtcSessionDescription: RTCSessionDescription = RTCSessionDescription(type: type, sdp: sdp!)
 
-        self.webRTCClient = WebRTCClient(iceServers: iceServers!)
+
+        self.webRTCClient = WebRTCClient(iceServers: iceServers!, username: username, credential: credential)
         self.webRTCClient?.delegate = self
         self.webRTCClient!.set(remoteSdp: rtcSessionDescription) { (Error) in
             self.webRTCClient?.answer(completion: { (sdp: RTCSessionDescription) in

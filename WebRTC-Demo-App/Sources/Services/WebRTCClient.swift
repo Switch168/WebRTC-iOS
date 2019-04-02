@@ -44,9 +44,13 @@ final class WebRTCClient: NSObject {
         fatalError("WebRTCClient:init is unavailable")
     }
 
-    required init(iceServers: [String]) {
+    required init(iceServers: [String], username: String?, credential: String?) {
         let config = RTCConfiguration()
-        config.iceServers = [RTCIceServer(urlStrings: iceServers)]
+        config.iceServers = [
+            RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"]),
+            RTCIceServer(urlStrings: ["stun:stun3.l.google.com:19302"]),
+            RTCIceServer(urlStrings: iceServers, username: username, credential: credential)
+        ]
         config.sdpSemantics = .unifiedPlan
         config.continualGatheringPolicy = .gatherOnce
         config.iceTransportPolicy = .all

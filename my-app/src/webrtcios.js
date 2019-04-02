@@ -16,10 +16,7 @@ module.exports = {
       [options]
     );
   },
-  acceptOffer: function acceptOffer(_ref, callback) {
-    var iceServers = _ref.iceServers,
-      sdp = _ref.sdp;
-
+  acceptOffer: function acceptOffer(options, callback) {
     var successHandler = function successHandler(result) {
       // we need an sdp from the delegate or dont call back
       if (!result) {
@@ -39,10 +36,7 @@ module.exports = {
       "WebRTCiOS",
       "acceptOffer",
       [
-        {
-          iceServers: iceServers,
-          sdp: sdp
-        }
+        options
       ]
     );
   },

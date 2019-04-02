@@ -18,10 +18,9 @@ class App extends Component {
 
 
 
-
     this.state = { sdp: [], received: [], message: [], accepted: [], last: [] };
     websocket.onmessage = ({ data }) => {
-      console.log("onmessage", data);
+      // console.log("onmessage", data);
       const message = JSON.parse(data);
 
       this.setState({ received: message.data });
@@ -29,7 +28,7 @@ class App extends Component {
         window.webrtcios.setRemoteDescription(
           message.data,
           (error, result) => {
-            console.log(message.data);
+            // console.log(message.data);
             websocket.send(
               JSON.stringify({ data: result, type: "receiverSdp" })
             );
@@ -60,8 +59,8 @@ class App extends Component {
         </button>
         <button
           onClick={() => {
-            window.webrtcios.createOffer({ iceServers }, (error, result) => {
-              console.log("JS", result);
+            window.webrtcios.createOffer({ iceServers, username: "momo", credential: "passwordmomo" }, (error, result) => {
+              // console.log("JS", result);
               this.setState({ sdp: result });
             });
           }}
@@ -91,7 +90,7 @@ class App extends Component {
             if (!this.state.sdp) return;
             const { sdp } = this.state;
             window.webrtcios.acceptOffer(
-              { iceServers, sdp: this.state.received },
+              { iceServers, username: "momo", credential: "passwordmomo", sdp: this.state.received },
               (error, result) => {
                 this.setState({ accepted: result });
                 websocket.send(

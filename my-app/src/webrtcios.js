@@ -1,8 +1,3 @@
-// module.exports = {
-//   greet: function (name, successCallback, errorCallback) {
-//     cordova.exec(successCallback, errorCallback, "Hello", "greet", [name]);
-//   }
-// };
 module.exports = {
   createOffer: function createOffer(options, callback) {
     var errorHandler = function errorHandler(error) {
@@ -60,6 +55,7 @@ module.exports = {
       return callback("Error: ".concat(error));
     };
 
+
     window.cordova.exec(
       successHandler,
       errorHandler,
@@ -71,6 +67,17 @@ module.exports = {
         }
       ]
     );
+  },
+  hangupCallback: function hangupCallback(callback) {
+    var successHandler = function successHandler(result) {
+      return callback(null, result);
+    };
+
+    var errorHandler = function errorHandler(error) {
+      return callback("Error: ".concat(error));
+    };
+
+    window.cordova.exec(successHandler, errorHandler, "WebRTCiOS", "hangupCallback", []);
   },
   close: function close(callback) {
     var successHandler = function successHandler(result) {

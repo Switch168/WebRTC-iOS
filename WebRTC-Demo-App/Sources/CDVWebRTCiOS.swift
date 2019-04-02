@@ -1,12 +1,14 @@
 import Foundation
 import AVFoundation
 
+
 @objc(CDVWebRTCiOS)
 class CDVWebRTCiOS: CDVPlugin {
 
     var webRTCClient: WebRTCClient?
     var eventListener: ((_ data: NSDictionary) -> Void)?
     var callbackId: String? = nil
+    var hangupCallbackId: String? = nil
 
     @objc(createOffer:) func createOffer(_ command: CDVInvokedUrlCommand) {
         NSLog("CDVWebRTCiOS.createOffer()");
@@ -18,7 +20,7 @@ class CDVWebRTCiOS: CDVPlugin {
         self.webRTCClient = WebRTCClient(iceServers: iceServers!)
         self.webRTCClient?.delegate = self
         self.webRTCClient!.offer { (sdp: RTCSessionDescription) in
-            let pluginResult = CDVPluginResult( status: CDVCommandStatus_OK
+            let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK
             )
             pluginResult?.setKeepCallbackAs(true)
             self.commandDelegate!.send(pluginResult, callbackId: command.callbackId)
@@ -40,7 +42,7 @@ class CDVWebRTCiOS: CDVPlugin {
         self.webRTCClient?.delegate = self
         self.webRTCClient!.set(remoteSdp: rtcSessionDescription) { (Error) in
             self.webRTCClient?.answer(completion: { (sdp: RTCSessionDescription) in
-                let pluginResult = CDVPluginResult( status: CDVCommandStatus_OK )
+                let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
                 pluginResult?.setKeepCallbackAs(true)
                 self.commandDelegate!.send(pluginResult, callbackId: command.callbackId)
 
@@ -81,6 +83,12 @@ class CDVWebRTCiOS: CDVPlugin {
         self.webRTCClient = nil
         self.viewController.dismiss(animated: true)
     }
+
+    @objc(hangupCallback:) func hangupCallback(_ command: CDVInvokedUrlCommand) {
+        NSLog("CDVWebRTCiOS . hangupCallback")
+        self.hangupCallbackId = command.callbackId
+    }
+
 }
 
 
@@ -104,6 +112,13 @@ extension CDVWebRTCiOS: WebRTCClientDelegate {
     }
 
     func webRTCClient(_ client: WebRTCClient, didReceiveData data: Data) {
+    }
+
+    func hangup() {
+        NSLog("CDVWebRTCiOS . hangupCallback from delegate")
+        let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
+        pluginResult?.setKeepCallbackAs(true)
+        self.commandDelegate!.send(pluginResult, callbackId: self.hangupCallbackId)
     }
 }
 

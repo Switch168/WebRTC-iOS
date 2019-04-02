@@ -8,6 +8,17 @@ const websocket = new WebSocket(config.signallingServer);
 class App extends Component {
   constructor(props) {
     super(props);
+
+    document.addEventListener("deviceready", () => {
+      window.webrtcios.hangupCallback(() => {
+        console.log('hangup detected')
+        websocket.send(JSON.stringify({ type: "hangup" }));
+      })
+    }, false);
+
+
+
+
     this.state = { sdp: [], received: [], message: [], accepted: [], last: [] };
     websocket.onmessage = ({ data }) => {
       console.log("onmessage", data);
@@ -16,7 +27,7 @@ class App extends Component {
       this.setState({ received: message.data });
       if (message.type === "answer") {
         window.webrtcios.setRemoteDescription(
-          { sdp: message.data },
+          message.data,
           (error, result) => {
             console.log(message.data);
             websocket.send(

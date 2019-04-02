@@ -7,6 +7,9 @@
 ### API
 
 ```javascript
+
+
+
 window.webrtcios.createOffer(
   {
     iceServers: [
@@ -42,5 +45,9 @@ window.webrtcios.setRemoteDescription(sdp, () => {
   
 })
 
-window.webrtcios.close()
+window.webrtcios.hangupCallback(() => {
+  // hangup send hangup to other side
+})
+
+window.webrtcios.close() // close the video window
 ```

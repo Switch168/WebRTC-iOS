@@ -14,6 +14,7 @@ protocol WebRTCClientDelegate: class {
     func webRTCClient(_ client: WebRTCClient, didDiscoverLocalCandidate candidate: RTCIceCandidate)
     func webRTCClient(_ client: WebRTCClient, didChangeConnectionState state: RTCIceConnectionState)
     func webRTCClient(_ client: WebRTCClient, didReceiveData data: Data)
+    func hangup()
 }
 
 final class WebRTCClient: NSObject {
@@ -220,6 +221,7 @@ final class WebRTCClient: NSObject {
     func close() {
         peerConnection.delegate = nil
         peerConnection.close()
+        self.delegate?.hangup()
     }
 }
 

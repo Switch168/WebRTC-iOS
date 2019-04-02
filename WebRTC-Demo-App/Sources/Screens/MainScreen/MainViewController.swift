@@ -180,6 +180,9 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: SignalClientDelegate {
+    func hangup() {
+
+    }
     func signalClientDidConnect(_ signalClient: SignalingClient) {
         self.signalingConnected = true
     }

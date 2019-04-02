@@ -9,6 +9,7 @@ class CDVWebRTCiOS: CDVPlugin {
     var eventListener: ((_ data: NSDictionary) -> Void)?
     var callbackId: String? = nil
     var hangupCallbackId: String? = nil
+    var openCallbackId: String? = nil
 
     @objc(createOffer:) func createOffer(_ command: CDVInvokedUrlCommand) {
         NSLog("CDVWebRTCiOS.createOffer()");
@@ -106,6 +107,11 @@ class CDVWebRTCiOS: CDVPlugin {
         self.viewController.dismiss(animated: true)
     }
 
+    @objc(open:) func open(_ command: CDVInvokedUrlCommand) {
+        NSLog("CDVWebRTCiOS . open")
+        self.openCallbackId = command.callbackId
+    }
+
     @objc(hangupCallback:) func hangupCallback(_ command: CDVInvokedUrlCommand) {
         NSLog("CDVWebRTCiOS . hangupCallback")
         self.hangupCallbackId = command.callbackId
@@ -118,7 +124,7 @@ extension CDVWebRTCiOS: WebRTCClientDelegate {
 
     func webRTCClient(_ client: WebRTCClient, didIceGatheringStateChanged newState: RTCIceGatheringState) {
         if (newState == RTCIceGatheringState.complete) {
-            var sdp = client.getLocalDescription()
+            let sdp = client.getLocalDescription()
             let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: sdp.sdp)
             self.commandDelegate!.send(pluginResult, callbackId: self.callbackId)
         }
@@ -141,6 +147,13 @@ extension CDVWebRTCiOS: WebRTCClientDelegate {
         let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
         pluginResult?.setKeepCallbackAs(true)
         self.commandDelegate!.send(pluginResult, callbackId: self.hangupCallbackId)
+    }
+    
+    func open() {
+        NSLog("CDVWebRTCiOS . openCallback from delegate")
+        let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
+        pluginResult?.setKeepCallbackAs(true)
+        self.commandDelegate!.send(pluginResult, callbackId: self.openCallbackId)
     }
 }
 

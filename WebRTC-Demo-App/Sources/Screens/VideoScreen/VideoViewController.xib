@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoViewController" customModule="WebRTC" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoViewController" customModule="WebRTC_Demo" customModuleProvider="target">
             <connections>
                 <outlet property="localVideoView" destination="AOt-yj-kPb" id="Dck-BK-47J"/>
                 <outlet property="view" destination="iN0-l3-epB" id="t0K-uJ-o5K"/>
@@ -19,32 +18,74 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOt-yj-kPb">
-                    <rect key="frame" x="231.5" y="480.5" width="123.5" height="166.5"/>
+                <view contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOt-yj-kPb">
+                    <rect key="frame" x="235" y="40" width="123.5" height="166.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0c-WK-c8E">
-                    <rect key="frame" x="20" y="40" width="34" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0c-WK-c8E" customClass="HangButton" customModule="WebRTC_Demo" customModuleProvider="target">
+                    <rect key="frame" x="132.66666666666666" y="613" width="110" height="110"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="110" id="BaM-fn-7Bl"/>
+                        <constraint firstAttribute="width" constant="110" id="mre-A1-eDW"/>
+                    </constraints>
                     <viewLayoutGuide key="safeArea" id="w2x-l1-7Sg"/>
-                    <state key="normal" title="Back"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                    <state key="normal" image="call"/>
                     <connections>
                         <action selector="backDidTap:" destination="-1" eventType="touchUpInside" id="Sm0-wb-G5M"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vf8-Xi-FSb">
+                    <rect key="frame" x="295" y="673" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="7Tw-Hs-U9a"/>
+                        <constraint firstAttribute="height" constant="50" id="C7F-Of-Ug2"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="reverse"/>
+                    <connections>
+                        <action selector="reverse:" destination="-1" eventType="touchUpInside" id="gzp-JL-U1h"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMq-Nz-Hwn">
+                    <rect key="frame" x="30" y="673" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="AA6-bC-qCg"/>
+                        <constraint firstAttribute="width" constant="50" id="Yea-5n-Tuo"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="micoff"/>
+                    <connections>
+                        <action selector="mute:" destination="-1" eventType="touchUpInside" id="BBq-BI-x4H"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="AOt-yj-kPb" firstAttribute="bottom" secondItem="pxm-TL-5nk" secondAttribute="bottom" constant="-20" id="0O4-We-mfb"/>
+                <constraint firstItem="N0c-WK-c8E" firstAttribute="centerX" secondItem="pxm-TL-5nk" secondAttribute="centerX" id="6MQ-Bi-0bp"/>
+                <constraint firstItem="pxm-TL-5nk" firstAttribute="trailing" secondItem="Vf8-Xi-FSb" secondAttribute="trailing" constant="30" id="6ae-Ar-r4H"/>
                 <constraint firstItem="AOt-yj-kPb" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.25" id="8At-M9-fOW"/>
+                <constraint firstItem="pxm-TL-5nk" firstAttribute="bottom" secondItem="Vf8-Xi-FSb" secondAttribute="bottom" constant="55" id="ARZ-Up-k0O"/>
+                <constraint firstItem="pxm-TL-5nk" firstAttribute="bottom" secondItem="KMq-Nz-Hwn" secondAttribute="bottom" constant="55" id="DqB-pU-6BL"/>
+                <constraint firstItem="AOt-yj-kPb" firstAttribute="top" secondItem="pxm-TL-5nk" secondAttribute="top" constant="40" id="EEV-hQ-obZ"/>
+                <constraint firstItem="pxm-TL-5nk" firstAttribute="bottom" secondItem="N0c-WK-c8E" secondAttribute="bottom" constant="55" id="FUn-VM-zgf"/>
                 <constraint firstItem="AOt-yj-kPb" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.33" id="Q79-fx-RRs"/>
-                <constraint firstItem="N0c-WK-c8E" firstAttribute="leading" secondItem="pxm-TL-5nk" secondAttribute="leading" constant="20" id="Tx3-j5-jF0"/>
                 <constraint firstItem="AOt-yj-kPb" firstAttribute="trailing" secondItem="pxm-TL-5nk" secondAttribute="trailing" constant="-20" id="f7S-eS-CKC"/>
-                <constraint firstItem="N0c-WK-c8E" firstAttribute="top" secondItem="pxm-TL-5nk" secondAttribute="top" constant="20" id="fl5-Da-jpW"/>
+                <constraint firstItem="KMq-Nz-Hwn" firstAttribute="leading" secondItem="pxm-TL-5nk" secondAttribute="leading" constant="30" id="nbg-G9-4oS"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="pxm-TL-5nk"/>
+            <point key="canvasLocation" x="133.59999999999999" y="154.27286356821591"/>
         </view>
+        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="c0y-F4-A0p">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <point key="canvasLocation" x="-448" y="193"/>
+        </imageView>
     </objects>
+    <resources>
+        <image name="call" width="384" height="384"/>
+        <image name="micoff" width="384" height="384"/>
+        <image name="reverse" width="384" height="384"/>
+    </resources>
 </document>

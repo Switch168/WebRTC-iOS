@@ -8,6 +8,23 @@
 
 import UIKit
 
+@IBDesignable class HangButton: UIButton
+{
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        updateButton()
+    }
+
+    func updateButton() {
+        layer.cornerRadius = frame.size.height / 4
+        self.backgroundColor = UIColor.red
+        self.titleLabel?.textColor = UIColor.white
+//        self.contentEdgeInsets = UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
+//        self.imageEdgeInsets = UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
+    
+    }
+}
+
 class VideoViewController: UIViewController {
 
     @IBOutlet private weak var localVideoView: UIView?
@@ -38,7 +55,7 @@ class VideoViewController: UIViewController {
             let remoteRenderer = RTCEAGLVideoView(frame: self.view.frame)
         #endif
 
-        self.webRTCClient.startCaptureLocalVideo(renderer: localRenderer)
+        self.webRTCClient.startCaptureLocalVideo(renderer: localRenderer, cameraPosition: .front)
         self.webRTCClient.renderRemoteVideo(to: remoteRenderer)
         
         if let localVideoView = self.localVideoView {
@@ -65,12 +82,13 @@ class VideoViewController: UIViewController {
     
     @IBAction private func backDidTap(_ sender: Any) {
         self.webRTCClient.stopCaptureLocalVideo()
-
-
-//        [localRenderer stop];
-//        [remoteRenderer stop];
-
         self.webRTCClient.close()
         self.dismiss(animated: true)
+    }
+    @IBAction private func mute(_ sender: Any) {
+        self.webRTCClient.muteAudio()
+    }
+    @IBAction private func reverse(_ sender: Any) {
+        self.webRTCClient.toggleCamera()
     }
 }

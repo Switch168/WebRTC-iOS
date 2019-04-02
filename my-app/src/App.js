@@ -14,6 +14,11 @@ class App extends Component {
         console.log('hangup detected')
         websocket.send(JSON.stringify({ type: "hangup" }));
       })
+
+
+      window.webrtcios.openCallback(() => {
+        console.log('view open detected')
+      })
     }, false);
 
 

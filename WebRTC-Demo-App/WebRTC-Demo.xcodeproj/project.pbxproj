@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49C5A1DF225417A100275F42 /* call.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C5A1DE225417A100275F42 /* call.m */; };
+		49C5A1E12254182600275F42 /* CDVWebRTCiOSAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5A1E02254182600275F42 /* CDVWebRTCiOSAsset.swift */; };
+		49C5A1E322541A1100275F42 /* call.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 49C5A1E222541A1100275F42 /* call.pdf */; };
+		49C5A1E522541B0A00275F42 /* CDVWebRTCiOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49C5A1E422541B0A00275F42 /* CDVWebRTCiOS.xcassets */; };
 		49F445E0224AFDD3009C437E /* CDVWebRTCiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F445DF224AFDD3009C437E /* CDVWebRTCiOS.swift */; };
 		79177C9720B0DE7A00BCD399 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79177C9620B0DE7A00BCD399 /* WebRTCClient.swift */; };
 		79177C9920B0DF2700BCD399 /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79177C9820B0DF2700BCD399 /* SignalingClient.swift */; };
@@ -43,6 +47,11 @@
 		27F59EEC794858CDDF75D2F2 /* libPods-WebRTC-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WebRTC-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F327EBA6209267B26D6802D /* Pods-WebRTC-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTC-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		3511974734F2E9151ADAD1A8 /* Pods-WebRTC-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTC-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WebRTC-Demo/Pods-WebRTC-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		49C5A1DD225417A100275F42 /* call.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = call.h; path = ../../../../Desktop/call.h; sourceTree = "<group>"; };
+		49C5A1DE225417A100275F42 /* call.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = call.m; path = ../../../../Desktop/call.m; sourceTree = "<group>"; };
+		49C5A1E02254182600275F42 /* CDVWebRTCiOSAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDVWebRTCiOSAsset.swift; sourceTree = "<group>"; };
+		49C5A1E222541A1100275F42 /* call.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = call.pdf; sourceTree = "<group>"; };
+		49C5A1E422541B0A00275F42 /* CDVWebRTCiOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CDVWebRTCiOS.xcassets; sourceTree = "<group>"; };
 		49F445DF224AFDD3009C437E /* CDVWebRTCiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDVWebRTCiOS.swift; sourceTree = "<group>"; };
 		79177C9620B0DE7A00BCD399 /* WebRTCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
 		79177C9820B0DF2700BCD399 /* SignalingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
@@ -103,6 +112,7 @@
 		79177C9B20B0E84600BCD399 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				49C5A1E222541A1100275F42 /* call.pdf */,
 				79262EED20B0D6F800D576C1 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -132,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				79177CA720B2276400BCD399 /* VideoViewController.swift */,
+				49C5A1E422541B0A00275F42 /* CDVWebRTCiOS.xcassets */,
 				79177CA920B2283F00BCD399 /* VideoViewController.xib */,
 			);
 			path = VideoScreen;
@@ -160,12 +171,15 @@
 		798FBA422200F3B1009F525E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				49C5A1DD225417A100275F42 /* call.h */,
+				49C5A1DE225417A100275F42 /* call.m */,
 				798FBA452200F519009F525E /* Services */,
 				798FBA442200F510009F525E /* Screens */,
 				79177CA420B1C39700BCD399 /* Extensions */,
 				79262EE620B0D6F600D576C1 /* AppDelegate.swift */,
 				792198A122011A450051F03F /* Config.swift */,
 				49F445DF224AFDD3009C437E /* CDVWebRTCiOS.swift */,
+				49C5A1E02254182600275F42 /* CDVWebRTCiOSAsset.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -262,7 +276,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				79262EEE20B0D6F800D576C1 /* Assets.xcassets in Resources */,
+				49C5A1E522541B0A00275F42 /* CDVWebRTCiOS.xcassets in Resources */,
 				798FBA472200F681009F525E /* MainViewController.xib in Resources */,
+				49C5A1E322541A1100275F42 /* call.pdf in Resources */,
 				79177CAA20B2283F00BCD399 /* VideoViewController.xib in Resources */,
 				798FBA492200F9A9009F525E /* LaunchScreen.storyboard in Resources */,
 				FA6F541E224B5DEC00C13B7E /* Storyboard.storyboard in Resources */,
@@ -344,7 +360,9 @@
 				792198A222011A450051F03F /* Config.swift in Sources */,
 				79177CA820B2276400BCD399 /* VideoViewController.swift in Sources */,
 				79262EE720B0D6F600D576C1 /* AppDelegate.swift in Sources */,
+				49C5A1DF225417A100275F42 /* call.m in Sources */,
 				795A4A26221E081A00F8BB03 /* SessionDescription.swift in Sources */,
+				49C5A1E12254182600275F42 /* CDVWebRTCiOSAsset.swift in Sources */,
 				79177CA620B1F76E00BCD399 /* RTCStates.swift in Sources */,
 				79177C9920B0DF2700BCD399 /* SignalingClient.swift in Sources */,
 				795A4A2A221E0FB100F8BB03 /* Message.swift in Sources */,

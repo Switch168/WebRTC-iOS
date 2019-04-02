@@ -83,5 +83,16 @@ module.exports = {
     };
 
     window.cordova.exec(successHandler, errorHandler, "WebRTCiOS", "close", []);
+  },
+  openCallback: function openCallback(callback) {
+    var successHandler = function successHandler(result) {
+      return callback(null, result);
+    };
+
+    var errorHandler = function errorHandler(error) {
+      return callback("Error: ".concat(error));
+    };
+
+    window.cordova.exec(successHandler, errorHandler, "WebRTCiOS", "close", []);
   }
 };

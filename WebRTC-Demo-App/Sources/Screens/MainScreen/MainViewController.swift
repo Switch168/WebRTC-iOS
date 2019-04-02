@@ -183,6 +183,9 @@ extension MainViewController: SignalClientDelegate {
     func hangup() {
 
     }
+    func open() {
+        
+    }
     func signalClientDidConnect(_ signalClient: SignalingClient) {
         self.signalingConnected = true
     }

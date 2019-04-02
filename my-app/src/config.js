@@ -6,5 +6,5 @@ export default {
     "stun:stun3.l.google.com:19302",
     "stun:stun4.l.google.com:19302"
   ],
-  signallingServer: "ws:/192.168.50.71:8080"
+  signallingServer: "ws:/175.25.50.118:8080"
 };

@@ -72,7 +72,10 @@ class CDVWebRTCiOS: CDVPlugin {
                 let vc = VideoViewController(webRTCClient: self.webRTCClient!)
                 let navViewController = UINavigationController(rootViewController: vc)
                 navViewController.navigationBar.isHidden = true
-                self.viewController.present(navViewController, animated: true, completion: nil)
+                
+                DispatchQueue.main.async(execute: {
+                    self.viewController.present(navViewController, animated: true, completion: nil)
+                });
             })
         }
     }
@@ -96,7 +99,10 @@ class CDVWebRTCiOS: CDVPlugin {
             let vc = VideoViewController(webRTCClient: self.webRTCClient!)
             let navViewController = UINavigationController(rootViewController: vc)
             navViewController.navigationBar.isHidden = true
-            self.viewController.present(navViewController, animated: true, completion: nil)
+
+            DispatchQueue.main.async(execute: {
+                self.viewController.present(navViewController, animated: true, completion: nil)
+            });
         }
     }
 

@@ -26,7 +26,10 @@ import UIKit
 }
 
 class VideoViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var muteButton: UIButton!
+    @IBOutlet weak var unmuteButton: UIButton!
     @IBOutlet private weak var localVideoView: UIView?
     private let webRTCClient: WebRTCClient
 
@@ -42,6 +45,7 @@ class VideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        unmuteButton.isHidden = true
         
         #if arch(arm64)
             // Using metal (arm64 only)
@@ -87,6 +91,13 @@ class VideoViewController: UIViewController {
     }
     @IBAction private func mute(_ sender: Any) {
         self.webRTCClient.muteAudio()
+        self.muteButton.isHidden = true;
+        self.unmuteButton.isHidden = false;
+    }
+    @IBAction private func unmute(_ sender: Any) {
+        self.webRTCClient.unmuteAudio()
+        self.muteButton.isHidden = false;
+        self.unmuteButton.isHidden = true;
     }
     @IBAction private func reverse(_ sender: Any) {
         self.webRTCClient.toggleCamera()

@@ -13,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoViewController" customModule="WebRTC_Demo" customModuleProvider="target">
             <connections>
                 <outlet property="localVideoView" destination="AOt-yj-kPb" id="Dck-BK-47J"/>
+                <outlet property="muteButton" destination="KMq-Nz-Hwn" id="2w2-zu-vI5"/>
+                <outlet property="unmuteButton" destination="P6X-Xe-QhN" id="9wd-Xa-53O"/>
                 <outlet property="view" destination="iN0-l3-epB" id="t0K-uJ-o5K"/>
             </connections>
         </placeholder>
@@ -60,6 +62,18 @@
                         <action selector="mute:" destination="-1" eventType="touchUpInside" id="BBq-BI-x4H"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6X-Xe-QhN">
+                    <rect key="frame" x="30" y="698" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Li7-YJ-xMo"/>
+                        <constraint firstAttribute="height" constant="50" id="OLU-NO-R5b"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="micon"/>
+                    <connections>
+                        <action selector="mute:" destination="-1" eventType="touchUpInside" id="9r1-kX-v92"/>
+                        <action selector="unmute:" destination="-1" eventType="touchUpInside" id="r0d-uU-cCS"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -71,8 +85,10 @@
                 <constraint firstItem="AOt-yj-kPb" firstAttribute="top" secondItem="pxm-TL-5nk" secondAttribute="top" constant="40" id="EEV-hQ-obZ"/>
                 <constraint firstItem="pxm-TL-5nk" firstAttribute="bottom" secondItem="N0c-WK-c8E" secondAttribute="bottom" constant="55" id="FUn-VM-zgf"/>
                 <constraint firstItem="AOt-yj-kPb" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.33" id="Q79-fx-RRs"/>
+                <constraint firstItem="P6X-Xe-QhN" firstAttribute="leading" secondItem="pxm-TL-5nk" secondAttribute="leading" constant="30" id="QIy-ac-ORB"/>
                 <constraint firstItem="AOt-yj-kPb" firstAttribute="trailing" secondItem="pxm-TL-5nk" secondAttribute="trailing" constant="-20" id="f7S-eS-CKC"/>
                 <constraint firstItem="KMq-Nz-Hwn" firstAttribute="leading" secondItem="pxm-TL-5nk" secondAttribute="leading" constant="30" id="nbg-G9-4oS"/>
+                <constraint firstItem="pxm-TL-5nk" firstAttribute="bottom" secondItem="P6X-Xe-QhN" secondAttribute="bottom" constant="55" id="xtq-Zc-Urr"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="pxm-TL-5nk"/>
             <point key="canvasLocation" x="133.59999999999999" y="154.27286356821591"/>
@@ -86,6 +102,7 @@
     <resources>
         <image name="call" width="384" height="384"/>
         <image name="micoff" width="384" height="384"/>
+        <image name="micon" width="384" height="384"/>
         <image name="reverse" width="384" height="384"/>
     </resources>
 </document>

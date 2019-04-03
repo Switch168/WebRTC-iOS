@@ -107,8 +107,8 @@ class CDVWebRTCiOS: CDVPlugin {
         self.viewController.dismiss(animated: true)
     }
 
-    @objc(open:) func open(_ command: CDVInvokedUrlCommand) {
-        NSLog("CDVWebRTCiOS . open")
+    @objc(openCallback:) func openCallback(_ command: CDVInvokedUrlCommand) {
+        NSLog("CDVWebRTCiOS . openCallback")
         self.openCallbackId = command.callbackId
     }
 

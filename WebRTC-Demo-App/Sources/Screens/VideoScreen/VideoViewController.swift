@@ -67,6 +67,7 @@ class VideoViewController: UIViewController {
         }
         self.embedView(remoteRenderer, into: self.view)
         self.view.sendSubviewToBack(remoteRenderer)
+        self.webRTCClient.delegate?.open()
     }
     
     private func embedView(_ view: UIView, into containerView: UIView) {

@@ -8,8 +8,8 @@ const websocket = new WebSocket(config.signallingServer);
 class App extends Component {
   constructor(props) {
     super(props);
-
     document.addEventListener("deviceready", () => {
+
       window.webrtcios.hangupCallback(() => {
         console.log('hangup detected')
         websocket.send(JSON.stringify({ type: "hangup" }));
@@ -20,8 +20,6 @@ class App extends Component {
         console.log('view open detected')
       })
     }, false);
-
-
 
     this.state = { sdp: [], received: [], message: [], accepted: [], last: [] };
     websocket.onmessage = ({ data }) => {

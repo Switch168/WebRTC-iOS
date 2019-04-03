@@ -93,6 +93,6 @@ module.exports = {
       return callback("Error: ".concat(error));
     };
 
-    window.cordova.exec(successHandler, errorHandler, "WebRTCiOS", "close", []);
+    window.cordova.exec(successHandler, errorHandler, "WebRTCiOS", "open", []);
   }
 };

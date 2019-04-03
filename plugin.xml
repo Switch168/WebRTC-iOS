@@ -19,6 +19,7 @@
         <source-file src="WebRTC-Demo-App/Sources/Extensions/SessionDescription.swift" />
         <source-file src="WebRTC-Demo-App/Sources/Screens/VideoScreen/VideoViewController.swift" />
         <source-file src="WebRTC-Demo-App/Sources/Screens/VideoScreen/VideoViewController.xib" />
+        <source-file src="WebRTC-Demo-App/Sources/Screens/VideoScreen/CDVWebRTCiOS.xcassets" />
         <source-file src="WebRTC-Demo-App/Sources/Services/WebRTCClient.swift" />
         <source-file src="WebRTC-Demo-App/Sources/CDVWebRTCiOS.swift" />
     </platform>

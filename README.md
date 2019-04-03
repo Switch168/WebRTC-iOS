@@ -3,6 +3,7 @@
 3. Drag and drop WebRTC.framework to framework (copy item as needed) + set as embedded binary
 4. add `#import <WebRTC/WebRTC.h>` to linked header
 5. Swift v 5 set
+6. ``` cp -a plugins/webrtc-ios/WebRTC-Demo-App/Sources/Screens/VideoScreen/CDVWebRTCiOS.xcassets/*.imageset platforms/ios/{projectname}/Images.xcassets/  ```
 
 ### API
 

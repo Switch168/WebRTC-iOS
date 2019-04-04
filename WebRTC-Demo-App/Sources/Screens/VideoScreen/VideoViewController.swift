@@ -28,6 +28,8 @@ import UIKit
 class VideoViewController: UIViewController {
     
     
+    @IBOutlet weak var speakerOffButton: UIButton!
+    @IBOutlet weak var speakerOnButton: UIButton!
     @IBOutlet weak var muteButton: UIButton!
     @IBOutlet weak var unmuteButton: UIButton!
     @IBOutlet private weak var localVideoView: UIView?
@@ -45,7 +47,8 @@ class VideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        unmuteButton.isHidden = true
+        muteButton.isHidden = true
+        speakerOnButton.isHidden = true
         
         #if arch(arm64)
             // Using metal (arm64 only)
@@ -68,6 +71,7 @@ class VideoViewController: UIViewController {
         self.embedView(remoteRenderer, into: self.view)
         self.view.sendSubviewToBack(remoteRenderer)
         self.webRTCClient.delegate?.open()
+             self.webRTCClient.speakerOn()
     }
     
     private func embedView(_ view: UIView, into containerView: UIView) {
@@ -91,14 +95,24 @@ class VideoViewController: UIViewController {
         self.dismiss(animated: true)
     }
     @IBAction private func mute(_ sender: Any) {
-        self.webRTCClient.muteAudio()
+        self.webRTCClient.unmuteAudio()
         self.muteButton.isHidden = true;
         self.unmuteButton.isHidden = false;
     }
     @IBAction private func unmute(_ sender: Any) {
-        self.webRTCClient.unmuteAudio()
+        self.webRTCClient.muteAudio()
         self.muteButton.isHidden = false;
         self.unmuteButton.isHidden = true;
+    }
+    @IBAction private func speakerOn(_ sender: Any) {
+        self.webRTCClient.speakerOff()
+        self.speakerOffButton.isHidden = true;
+        self.speakerOnButton.isHidden = false;
+    }
+    @IBAction private func speakerOff(_ sender: Any) {
+        self.webRTCClient.speakerOn()
+        self.speakerOffButton.isHidden = false;
+        self.speakerOnButton.isHidden = true;
     }
     @IBAction private func reverse(_ sender: Any) {
         self.webRTCClient.toggleCamera()

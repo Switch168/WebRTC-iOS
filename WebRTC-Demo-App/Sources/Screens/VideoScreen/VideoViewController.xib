@@ -14,6 +14,8 @@
             <connections>
                 <outlet property="localVideoView" destination="AOt-yj-kPb" id="Dck-BK-47J"/>
                 <outlet property="muteButton" destination="KMq-Nz-Hwn" id="2w2-zu-vI5"/>
+                <outlet property="speakerOffButton" destination="OWA-Wd-ZRu" id="OIE-ZI-cBW"/>
+                <outlet property="speakerOnButton" destination="kWo-4W-Rda" id="YNd-ja-vxg"/>
                 <outlet property="unmuteButton" destination="P6X-Xe-QhN" id="9wd-Xa-53O"/>
                 <outlet property="view" destination="iN0-l3-epB" id="t0K-uJ-o5K"/>
             </connections>
@@ -70,13 +72,35 @@
                     </constraints>
                     <state key="normal" backgroundImage="micon"/>
                     <connections>
-                        <action selector="mute:" destination="-1" eventType="touchUpInside" id="9r1-kX-v92"/>
                         <action selector="unmute:" destination="-1" eventType="touchUpInside" id="r0d-uU-cCS"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kWo-4W-Rda">
+                    <rect key="frame" x="30" y="568" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="itx-Ly-GeT"/>
+                        <constraint firstAttribute="width" constant="50" id="p4l-hg-r8f"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="speakeron"/>
+                    <connections>
+                        <action selector="speakerOff:" destination="-1" eventType="touchUpInside" id="hgs-jz-hMI"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWA-Wd-ZRu">
+                    <rect key="frame" x="30" y="585" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="ay0-gY-l2U"/>
+                        <constraint firstAttribute="height" constant="50" id="sVH-47-dXd"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="speakeroff"/>
+                    <connections>
+                        <action selector="speakerOn:" destination="-1" eventType="touchUpInside" id="3Oo-Hj-0L3"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="kWo-4W-Rda" firstAttribute="leading" secondItem="pxm-TL-5nk" secondAttribute="leading" constant="30" id="1cM-fa-Rfz"/>
                 <constraint firstItem="N0c-WK-c8E" firstAttribute="centerX" secondItem="pxm-TL-5nk" secondAttribute="centerX" id="6MQ-Bi-0bp"/>
                 <constraint firstItem="pxm-TL-5nk" firstAttribute="trailing" secondItem="Vf8-Xi-FSb" secondAttribute="trailing" constant="30" id="6ae-Ar-r4H"/>
                 <constraint firstItem="AOt-yj-kPb" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.25" id="8At-M9-fOW"/>
@@ -84,14 +108,17 @@
                 <constraint firstItem="pxm-TL-5nk" firstAttribute="bottom" secondItem="KMq-Nz-Hwn" secondAttribute="bottom" constant="55" id="DqB-pU-6BL"/>
                 <constraint firstItem="AOt-yj-kPb" firstAttribute="top" secondItem="pxm-TL-5nk" secondAttribute="top" constant="40" id="EEV-hQ-obZ"/>
                 <constraint firstItem="pxm-TL-5nk" firstAttribute="bottom" secondItem="N0c-WK-c8E" secondAttribute="bottom" constant="55" id="FUn-VM-zgf"/>
+                <constraint firstItem="OWA-Wd-ZRu" firstAttribute="leading" secondItem="pxm-TL-5nk" secondAttribute="leading" constant="30" id="Mwb-n5-mEt"/>
+                <constraint firstItem="KMq-Nz-Hwn" firstAttribute="top" secondItem="kWo-4W-Rda" secondAttribute="bottom" constant="55" id="PZF-8V-qkl"/>
                 <constraint firstItem="AOt-yj-kPb" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.33" id="Q79-fx-RRs"/>
                 <constraint firstItem="P6X-Xe-QhN" firstAttribute="leading" secondItem="pxm-TL-5nk" secondAttribute="leading" constant="30" id="QIy-ac-ORB"/>
                 <constraint firstItem="AOt-yj-kPb" firstAttribute="trailing" secondItem="pxm-TL-5nk" secondAttribute="trailing" constant="-20" id="f7S-eS-CKC"/>
+                <constraint firstItem="KMq-Nz-Hwn" firstAttribute="top" secondItem="OWA-Wd-ZRu" secondAttribute="bottom" constant="55" id="fS9-TK-RG5"/>
                 <constraint firstItem="KMq-Nz-Hwn" firstAttribute="leading" secondItem="pxm-TL-5nk" secondAttribute="leading" constant="30" id="nbg-G9-4oS"/>
                 <constraint firstItem="pxm-TL-5nk" firstAttribute="bottom" secondItem="P6X-Xe-QhN" secondAttribute="bottom" constant="55" id="xtq-Zc-Urr"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="pxm-TL-5nk"/>
-            <point key="canvasLocation" x="133.59999999999999" y="154.27286356821591"/>
+            <point key="canvasLocation" x="133.59999999999999" y="153.69458128078819"/>
         </view>
         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="c0y-F4-A0p">
             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -104,5 +131,7 @@
         <image name="micoff" width="384" height="384"/>
         <image name="micon" width="384" height="384"/>
         <image name="reverse" width="384" height="384"/>
+        <image name="speakeroff" width="384" height="384"/>
+        <image name="speakeron" width="384" height="384"/>
     </resources>
 </document>

@@ -10,7 +10,8 @@ class CDVWebRTCiOS: CDVPlugin {
     var callbackId: String? = nil
     var hangupCallbackId: String? = nil
     var openCallbackId: String? = nil
-
+    var timeoutToggle = false
+    
     @objc(createOffer:) func createOffer(_ command: CDVInvokedUrlCommand) {
         NSLog("CDVWebRTCiOS.createOffer()");
         callbackId = command.callbackId
@@ -140,6 +141,20 @@ extension CDVWebRTCiOS: WebRTCClientDelegate {
     }
 
     func webRTCClient(_ client: WebRTCClient, didDiscoverLocalCandidate candidate: RTCIceCandidate) {
+        // on some network the complete never fires, so we do this.
+        if(self.timeoutToggle) {
+            return;
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            let sdp = client.getLocalDescription()
+            let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: sdp.sdp)
+            
+            self.commandDelegate!.send(pluginResult, callbackId: self.callbackId)
+        }
+        
+        
+        self.timeoutToggle = true
     }
 
     func webRTCClient(_ client: WebRTCClient, didChangeConnectionState state: RTCIceConnectionState) {
@@ -153,6 +168,7 @@ extension CDVWebRTCiOS: WebRTCClientDelegate {
         let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
         pluginResult?.setKeepCallbackAs(true)
         self.commandDelegate!.send(pluginResult, callbackId: self.hangupCallbackId)
+        self.timeoutToggle = false
     }
     
     func open() {

@@ -110,6 +110,7 @@ class CDVWebRTCiOS: CDVPlugin {
     @objc(close:) func close(_ command: CDVInvokedUrlCommand) {
         NSLog("CDVWebRTCiOS . close")
         self.callbackId = nil
+        self.webRTCClient?.close();
         self.webRTCClient = nil
         self.viewController.dismiss(animated: true)
     }
